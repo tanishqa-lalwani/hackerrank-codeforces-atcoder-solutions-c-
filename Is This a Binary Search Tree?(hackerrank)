@@ -1,0 +1,30 @@
+ vector<int> v;
+    void inorder(Node* root)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+        inorder(root->left);
+        v.push_back(root->data);
+        inorder(root->right);
+    }
+
+	bool checkBST(Node* root) 
+    {
+        inorder(root);
+       for(int i=1;i<v.size();i++)
+       {
+           if(v[i]>v[i-1])
+           {
+               continue;
+           }
+           
+           else
+           {
+               return false;
+           }
+       }
+        
+        return true;
+	}
